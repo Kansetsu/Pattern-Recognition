@@ -5,18 +5,20 @@ import java.util.Random;
 
 public class Oleos {
 
+    //Parâmetros para preenchimento das listas. Limites máximos e minímos para preenchimento
     double minCor = 4;
     double maxCor = 6;
     double minForma = 2;
     double maxForma = 6;
 
+    //Listas com as bases de dados
     public Double[] corTreinamento = new Double[1000];
     public Double[] corTeste = new Double[1000];
 
     public Double[] formaTreinamento = new Double[1000];
     public Double[] formaTeste = new Double[1000];
 
-
+    //Função que gera um número aleatório e formata ele para poder ser preenchido pela lista
     public double gerarNumeroAleatorio(double max, double min) {
         Random random = new Random();
         double numeroAleatorio = min + (max - min) * random.nextDouble();
@@ -24,6 +26,8 @@ public class Oleos {
         return Double.parseDouble(numeroFormatado.replace(",", "."));
     }
 
+
+    //Função que gera a base de dados, preenchendo as listas, respectivamente, com números aleatórios dentro do range pré-estabelecido
     public void gerarBaseDeDados() {
         for (int i = 0; i < corTreinamento.length; i++) {
             corTreinamento[i] = gerarNumeroAleatorio(maxCor, minCor);
@@ -39,6 +43,7 @@ public class Oleos {
         }
     }
 
+    //Função que retorna a base de dados separada para teste/treinamento de cor
     public double separarBaseDeDadosCor(){
         double somaCor = 0;
         for (int i = 0; i<1000; i++){
@@ -47,6 +52,7 @@ public class Oleos {
         return somaCor / corTreinamento.length;
     }
 
+    //Função que retorna a base de dados separada para teste/treinamento de forma
     public double separarBaseDeDadosForma(){
         double somaForma = 0;
         for (int i = 0; i<1000; i++){
@@ -56,7 +62,7 @@ public class Oleos {
     }
 
 
-
+    //Função que retornará uma String com as listas e seus respectivos conteúdos
     @Override
     public String toString() {
         return "Óleos: " +
